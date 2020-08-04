@@ -86,7 +86,11 @@ class ANN(object):
         return np.average((target - pred)**2)
                 
                 
-    def gradient_descent(self, learning_rate): # weight update rule, update existing weights with derivatives and learning rate
+    def gradient_descent(self, learning_rate): 
+        # weight update rule, update existing weights with derivatives and learning rate
+        # when the derivatives are zero, it means, the minimum error has been obtained since derivative is zero for a minima. Based on whether
+        # target - pred(this op is done in training section) is positive or negative the weight update will accordingly move in the direction towards 
+        # the minima in the end, thereby minimising the error
         for i in range(len(self.weights)):
             self.weights[i] += self.derivatives[i]*learning_rate
     
